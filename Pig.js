@@ -2,36 +2,27 @@ class Pig extends BaseClass {
   constructor(x, y){
     super(x,y,50,50);
     this.image = loadImage("sprites/enemy.png");
-    this.visibility = 255;
-    this.remove = false;
+    this.visibility=255;
+    
   }
+
 
   display(){
-    
-    if(this.body.speed>3){
-      this.remove = true;
-      console.log("hey1")
-
-    }
-
-    if( this.remove === true){
-      
-        push();
-        this.visibility-=5;
-        tint(255,this.visibility);
-        console.log(this.visibility);
-        super.display();
-        pop();
-        if(this.visibility<=0){
-          World.remove(world,this.body);
+    console.log(this.body.speed)
+    //if the speed is greater than 3 or if its has started fading due to an attack, only then fade it
+    //if it totally fades away,then remove from the world
+    if(this.body.speed>3 || this.visibility<255 ){
+        this.visibility = this.visibility -5
+        if(this.visibility <= 0){
+          World.remove(world,this.body)
         }
     }
-    else{
-      super.display();
-    }
-       
- 
-   
+    push();
+    tint(255,this.visibility);
+    super.display();
+    pop();
   }
+
+};
 
 };
