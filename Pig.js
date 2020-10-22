@@ -8,7 +8,7 @@ class Pig extends BaseClass {
 
 
   display(){
-    console.log(this.body.speed)
+    //console.log(this.body.speed)
     //if the speed is greater than 3 or if its has started fading due to an attack, only then fade it
     //if it totally fades away,then remove from the world
     if(this.body.speed>3 || this.visibility<255 ){
